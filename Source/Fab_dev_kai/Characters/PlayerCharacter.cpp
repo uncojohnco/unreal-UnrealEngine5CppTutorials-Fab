@@ -17,12 +17,34 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// log to console
+	UE_LOG(LogTemp, Warning, TEXT("APlayerCharacter::BeginPlay"));
+	UE_LOG(LogTemp, Warning, TEXT("PrimaryActorTick.bCanEverTick = %s"),
+	       PrimaryActorTick.bCanEverTick ? TEXT("true") : TEXT("false"));
+
+	// log to screen
+	GEngine->AddOnScreenDebugMessage(-1, 4.f, FColor::Purple, TEXT("OnScreen"));
+
+	// log to screen via macro
+	DBG_PRINT_ONSCREEN("Print via macro from, %s", *FString(__FUNCTION__));
+
+	// Draw debug doodads
+	FVector TargetLocation = FVector(2200.f, 700.f, 150.f);
+	DBG_SPHERE(TargetLocation);
+	DBG_LINE(GetActorLocation(), TargetLocation);
 }
 
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	// Draw debug doodads
+	FVector ActorLocation = GetActorLocation();
+	FVector TargetLocation = FVector(2200.f, 700.f, 150.f);
+	DBG_SPHERE_TICK(ActorLocation);
+	DBG_LINE_TICK(ActorLocation, TargetLocation);
 }
 
 // Called to bind functionality to input
