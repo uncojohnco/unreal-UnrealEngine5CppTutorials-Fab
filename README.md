@@ -18,5 +18,5 @@ status: :white_large_square:\
 [Video](https://youtu.be/IT9ihIc9KyI) | [4c61ae8](https://github.com/kaijurgeit/UnrealEngine5CppTutorials/commit/4c61ae89e4b4c2c0ef8a221ed774dee8fef20416)
 
 ## 1. Unreal Engine 5 C++ | Starting with a Blank Project
-status: :white_large_square:\
+status: :ballot_box_with_check:\
 [Video](https://youtu.be/ikD-xaCcFUU) | [39f8eee](https://github.com/kaijurgeit/UnrealEngine5CppTutorials/commit/39f8eee01a85fbe87f8b6aa5a23a4adfe7ce6086)
