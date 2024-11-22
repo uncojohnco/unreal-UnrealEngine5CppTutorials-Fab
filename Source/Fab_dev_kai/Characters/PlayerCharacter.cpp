@@ -32,11 +32,14 @@ void APlayerCharacter::PossessedBy(AController* NewController)
 
 	// Setup player's AbilitySystemComponent
 	InitAbilitySystemComponent();
+	GiveDefaultAbilities();
 }
 
 void APlayerCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
+	
+	InitAbilitySystemComponent();
 }
 
 // Called when the game starts or when spawned
