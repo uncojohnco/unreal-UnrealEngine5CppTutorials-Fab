@@ -10,7 +10,7 @@ status: :white_large_square:\
 [Video](https://youtu.be/L-3ifQRpyB4) | [main](https://github.com/kaijurgeit/UnrealEngine5CppTutorials/commit/main)
 
 ## 3. Unreal Engine 5 C++ | Git (LFS) and GitHub - Command Line and Rider
-status: :white_large_square:\
+status: :ballot_box_with_check:\
 [Video](https://youtu.be/jcAwTc_QyWc) | [0d044df](https://github.com/kaijurgeit/UnrealEngine5CppTutorials/commit/0d044df3e8b52e4d5f073543c5884d95e1a4ae68)
 
 ## 2. Unreal Engine 5 C++ | Coding and Debugging with Rider
