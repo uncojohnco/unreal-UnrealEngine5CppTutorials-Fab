@@ -3,22 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "GameFramework/PlayerState.h"
 
 #include "AbilitySystemInterface.h"
-#include "FabCharacterBase.generated.h"
+#include "FabPlayerState.generated.h"
 
 class UFabAbilitySystemComponent;
 
-
 UCLASS()
-class FAB_DEV_KAI_API AFabCharacterBase : public ACharacter, public IAbilitySystemInterface
+class FAB_DEV_KAI_API AFabPlayerState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
-	AFabCharacterBase();
+	// Sets default values for this actor's properties
+	AFabPlayerState();
 
 	//~IAbilitySystemInterface interface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
@@ -34,7 +33,4 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };
