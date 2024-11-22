@@ -35,3 +35,17 @@ UAbilitySystemComponent* AFabCharacterBase::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
+
+
+// Called to give default abilities to the character
+void AFabCharacterBase::GiveDefaultAbilities()
+{
+	check(AbilitySystemComponent)
+	if (!HasAuthority()) { return; }
+
+	for (TSubclassOf<UGameplayAbility> AbilityClass : DefaultAbilities)
+	{
+		const FGameplayAbilitySpec AbilitySpec(AbilityClass, 1);
+		AbilitySystemComponent->GiveAbility(AbilitySpec);
+	}
+}

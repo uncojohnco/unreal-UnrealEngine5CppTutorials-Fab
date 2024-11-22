@@ -25,6 +25,7 @@ void AEnemyCharacter::BeginPlay()
 
 	// Setup enemy's AbilitySystemComponent
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	GiveDefaultAbilities();
 }
 
 // Called every frame
