@@ -3,6 +3,9 @@
 
 #include "PlayerCharacter.h"
 
+#include "AbilitySystem/FabAbilitySystemComponent.h"
+#include "Player/FabPlayerState.h"
+
 #include "FabMacros.h"
 
 
@@ -11,6 +14,29 @@ APlayerCharacter::APlayerCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+}
+
+// Set player's AbilitySystemComponent
+void APlayerCharacter::InitAbilitySystemComponent()
+{
+	AFabPlayerState* FabPlayerState = GetPlayerState<AFabPlayerState>();
+	check(FabPlayerState);
+	AbilitySystemComponent = CastChecked<UFabAbilitySystemComponent>(
+		FabPlayerState->GetAbilitySystemComponent());
+	AbilitySystemComponent->InitAbilityActorInfo(FabPlayerState, this);
+}
+
+void APlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	// Setup player's AbilitySystemComponent
+	InitAbilitySystemComponent();
+}
+
+void APlayerCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
 }
 
 // Called when the game starts or when spawned

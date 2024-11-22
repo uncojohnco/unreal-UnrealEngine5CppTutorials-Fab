@@ -15,6 +15,11 @@ class FAB_DEV_KAI_API APlayerCharacter : public AFabCharacterBase
 public:
 	// Sets default values for this character's properties
 	APlayerCharacter();
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+
+private:
+	void InitAbilitySystemComponent();
 
 protected:
 	// Called when the game starts or when spawned

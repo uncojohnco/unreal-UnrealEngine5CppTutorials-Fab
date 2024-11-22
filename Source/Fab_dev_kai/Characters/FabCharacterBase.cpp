@@ -3,11 +3,13 @@
 
 #include "FabCharacterBase.h"
 
+#include "AbilitySystem/FabAbilitySystemComponent.h"
+
 
 // Sets default values
 AFabCharacterBase::AFabCharacterBase()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  YouW can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -27,4 +29,9 @@ void AFabCharacterBase::Tick(float DeltaTime)
 void AFabCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+UAbilitySystemComponent* AFabCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
 }
