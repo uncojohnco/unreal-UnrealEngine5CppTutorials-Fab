@@ -4,6 +4,7 @@
 #include "FabPlayerState.h"
 
 #include "AbilitySystem/FabAbilitySystemComponent.h"
+#include "AbilitySystem/FabAttributeSet.h"
 
 
 // Sets default values
@@ -18,11 +19,17 @@ AFabPlayerState::AFabPlayerState()
 	AbilitySystemComponent = CreateDefaultSubobject<UFabAbilitySystemComponent>("AbilitySystemComponent");
 	// Gameplay effects are applied only to the owner of the character.
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+	AttributeSet = CreateDefaultSubobject<UFabAttributeSet>("AttributeSet");
 }
 
 UAbilitySystemComponent* AFabPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+UFabAttributeSet* AFabPlayerState::GetAttributeSet() const
+{
+	return AttributeSet;
 }
 
 // Called when the game starts or when spawned

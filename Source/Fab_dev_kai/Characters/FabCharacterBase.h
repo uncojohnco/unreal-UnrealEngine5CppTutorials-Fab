@@ -10,7 +10,10 @@
 
 #include "FabCharacterBase.generated.h"
 
+class UGameplayAbility;
 class UFabAbilitySystemComponent;
+class UFabAttributeSet;
+class UGameplayEffect;
 
 
 UCLASS()
@@ -24,9 +27,11 @@ public:
 
 	//~IAbilitySystemInterface interface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual UFabAttributeSet* GetAttributeSet() const;
 
 protected:
 	void GiveDefaultAbilities();
+	void InitDefaultAttributes() const;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -35,8 +40,14 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UFabAbilitySystemComponent> AbilitySystemComponent;
 
+	UPROPERTY()
+	TObjectPtr<UFabAttributeSet> AttributeSet;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Ability")
 	TArray<TSubclassOf<UGameplayAbility>> DefaultAbilities;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Ability")
+	TSubclassOf<UGameplayEffect> DefaultAttributeEffect;
 
 public:
 	// Called every frame

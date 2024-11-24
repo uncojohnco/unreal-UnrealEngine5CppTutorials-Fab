@@ -9,6 +9,7 @@
 #include "FabPlayerState.generated.h"
 
 class UFabAbilitySystemComponent;
+class UFabAttributeSet;
 
 UCLASS()
 class FAB_DEV_KAI_API AFabPlayerState : public APlayerState, public IAbilitySystemInterface
@@ -22,6 +23,8 @@ public:
 	//~IAbilitySystemInterface interface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
+	virtual UFabAttributeSet* GetAttributeSet() const;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -29,6 +32,9 @@ protected:
 	// Attach `AbilitySystemComponent` as a uproperty
 	UPROPERTY()
 	TObjectPtr<UFabAbilitySystemComponent> AbilitySystemComponent;
+
+	UPROPERTY()
+	TObjectPtr<UFabAttributeSet> AttributeSet;
 
 public:
 	// Called every frame
