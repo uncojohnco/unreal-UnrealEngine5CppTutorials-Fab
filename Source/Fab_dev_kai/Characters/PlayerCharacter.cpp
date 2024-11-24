@@ -24,6 +24,7 @@ void APlayerCharacter::InitAbilitySystemComponent()
 	AbilitySystemComponent = CastChecked<UFabAbilitySystemComponent>(
 		FabPlayerState->GetAbilitySystemComponent());
 	AbilitySystemComponent->InitAbilityActorInfo(FabPlayerState, this);
+	AttributeSet = FabPlayerState->GetAttributeSet();
 }
 
 void APlayerCharacter::PossessedBy(AController* NewController)
@@ -33,13 +34,15 @@ void APlayerCharacter::PossessedBy(AController* NewController)
 	// Setup player's AbilitySystemComponent
 	InitAbilitySystemComponent();
 	GiveDefaultAbilities();
+	InitDefaultAttributes();
 }
 
 void APlayerCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
-	
+
 	InitAbilitySystemComponent();
+	InitDefaultAttributes();
 }
 
 // Called when the game starts or when spawned

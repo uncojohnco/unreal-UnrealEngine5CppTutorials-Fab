@@ -36,6 +36,10 @@ UAbilitySystemComponent* AFabCharacterBase::GetAbilitySystemComponent() const
 	return AbilitySystemComponent;
 }
 
+UFabAttributeSet* AFabCharacterBase::GetAttributeSet() const
+{
+	return AttributeSet;
+}
 
 // Called to give default abilities to the character
 void AFabCharacterBase::GiveDefaultAbilities()
@@ -47,5 +51,22 @@ void AFabCharacterBase::GiveDefaultAbilities()
 	{
 		const FGameplayAbilitySpec AbilitySpec(AbilityClass, 1);
 		AbilitySystemComponent->GiveAbility(AbilitySpec);
+	}
+}
+
+void AFabCharacterBase::InitDefaultAttributes() const
+{
+	if (!AbilitySystemComponent || !DefaultAttributeEffect) { return; }
+
+	// Sets the source of the Effect, i.e. this Character (?)
+	FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
+	EffectContext.AddSourceObject(this);
+
+	// Apply the effect to this Character (?)
+	const FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(
+		DefaultAttributeEffect, 1.f, EffectContext);
+	if (SpecHandle.IsValid())
+	{
+		AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
 	}
 }
