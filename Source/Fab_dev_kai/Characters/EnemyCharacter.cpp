@@ -5,6 +5,7 @@
 
 #include "AbilitySystemComponent.h"
 #include "AbilitySystem/FabAbilitySystemComponent.h"
+#include "AbilitySystem/FabAttributeSet.h"
 
 
 // Sets default values
@@ -16,6 +17,7 @@ AEnemyCharacter::AEnemyCharacter()
 	AbilitySystemComponent = CreateDefaultSubobject<UFabAbilitySystemComponent>("AbilitySystemComponent");
 	// Gameplay effects are not replicated to other AI controlled pawns
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+	AttributeSet = CreateDefaultSubobject<UFabAttributeSet>("AttributeSet");
 }
 
 // Called when the game starts or when spawned
@@ -26,6 +28,7 @@ void AEnemyCharacter::BeginPlay()
 	// Setup enemy's AbilitySystemComponent
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 	GiveDefaultAbilities();
+	InitDefaultAttributes();
 }
 
 // Called every frame
