@@ -16,7 +16,8 @@ public class Fab_dev_kai : ModuleRules
 			"InputCore",
 			"GameplayAbilities",
 			"GameplayTags",
-			"GameplayTasks"
+			"GameplayTasks",
+			"UMG"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
