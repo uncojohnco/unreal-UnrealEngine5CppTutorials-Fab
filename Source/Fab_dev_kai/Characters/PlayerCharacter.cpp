@@ -7,6 +7,7 @@
 #include "Player/FabPlayerState.h"
 
 #include "FabMacros.h"
+#include "UI/FabHUD.h"
 
 
 // Sets default values
@@ -27,6 +28,17 @@ void APlayerCharacter::InitAbilitySystemComponent()
 	AttributeSet = FabPlayerState->GetAttributeSet();
 }
 
+void APlayerCharacter::InitHUD() const
+{
+	if (const APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+	{
+		if (AFabHUD* FabHUD = Cast<AFabHUD>(PlayerController->GetHUD()))
+		{
+			FabHUD->Init();
+		}
+	}
+}
+
 void APlayerCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
@@ -35,6 +47,7 @@ void APlayerCharacter::PossessedBy(AController* NewController)
 	InitAbilitySystemComponent();
 	GiveDefaultAbilities();
 	InitDefaultAttributes();
+	InitHUD();
 }
 
 void APlayerCharacter::OnRep_PlayerState()
@@ -43,6 +56,7 @@ void APlayerCharacter::OnRep_PlayerState()
 
 	InitAbilitySystemComponent();
 	InitDefaultAttributes();
+	InitHUD();
 }
 
 // Called when the game starts or when spawned

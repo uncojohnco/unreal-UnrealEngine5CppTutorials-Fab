@@ -20,6 +20,7 @@ public:
 
 private:
 	void InitAbilitySystemComponent();
+	void InitHUD() const;
 
 protected:
 	// Called when the game starts or when spawned
