@@ -27,7 +27,7 @@ UAbilitySystemComponent* AFabPlayerState::GetAbilitySystemComponent() const
 	return AbilitySystemComponent;
 }
 
-UFabAttributeSet* AFabPlayerState::GetAttributeSet()
+UFabAttributeSet* AFabPlayerState::GetAttributeSet() const
 {
 	return AttributeSet;
 }

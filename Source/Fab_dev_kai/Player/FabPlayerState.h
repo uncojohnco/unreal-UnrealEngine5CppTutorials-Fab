@@ -23,7 +23,7 @@ public:
 	//~IAbilitySystemInterface interface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
-	virtual UFabAttributeSet* GetAttributeSet();
+	virtual UFabAttributeSet* GetAttributeSet() const;
 
 protected:
 	// Called when the game starts or when spawned
